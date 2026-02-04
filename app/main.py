@@ -3,11 +3,18 @@ from redis.asyncio import Redis
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core import get_settings, create_lifespan, get_db_session, get_redis_client, Settings
+from app.core import (
+    get_settings,
+    create_lifespan,
+    get_db_session,
+    get_redis_client,
+    Settings,
+)
 
 
 def create_app(settings: Settings) -> FastAPI:
     return FastAPI(title=settings.app_name, lifespan=create_lifespan(settings))
+
 
 settings = get_settings()
 app = create_app(settings)
