@@ -47,9 +47,23 @@ curl http://localhost:8000/health
 - `get_db_session` — получить `AsyncSession` для запросов в PostgreSQL.
 - `get_redis_client` — получить `Redis` клиент.
 - `Settings` — единый источник конфигурации.
+- `create_app(settings)` — фабрика FastAPI-приложения.
 
 ## Тесты
 ```
 poetry install --with dev
 poetry run pytest
 ```
+
+## Code style
+Pre-commit хуки (ruff check/format):
+```
+poetry install --with dev
+poetry run pre-commit install
+poetry run pre-commit run --all-files
+```
+
+CI (GitHub Actions) выполняет:
+- `ruff check`
+- `ruff format --check`
+- `pytest`
